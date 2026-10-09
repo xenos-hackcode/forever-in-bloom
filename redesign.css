@@ -1,11 +1,6 @@
 /* Live wedding page: typography, colour and space replace raster artwork. */
-#intro{padding:0;background:#f7f1e7;color:#332b23;display:block;overflow:hidden}
+#intro{padding:0;background:#f7f1e7;color:#332b23;display:block}
 .petals,.corner{display:none}
-
-/* Page-at-a-time navigation: only the active page renders, each scrolls independently */
-.page{display:none}
-.page.active{display:block;height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch}
-#home.page.active{display:block}
 
 /* Full-bleed photo hero, matching the reference site's landing section */
 .hero{position:relative;height:100svh;min-height:520px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 24px 60px;text-align:center;overflow:hidden;color:#fff8ef;background:#2b1206}
@@ -17,49 +12,54 @@
 .hero-names{position:relative;font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(48px,9vw,86px);line-height:1.05;margin:0 0 10px;color:#fff8ef;text-shadow:0 4px 24px #0008}
 .hero-names span{display:block}
 .hero-date{position:relative;font:15px 'Cormorant Garamond',serif;letter-spacing:1px;color:#f3e3cf;margin:0}
-.intro-card{max-width:760px;margin:0 auto;padding:70px 40px 65px;border-radius:0;background:transparent;box-shadow:none;animation:none;text-align:left}
+.intro-card{max-width:1140px;margin:0 auto;padding:70px 72px 65px;border-radius:0;background:transparent;box-shadow:none;animation:none;display:grid;grid-template-columns:1fr 1fr;grid-template-areas:'family family' 'kicker venues' 'names venues' 'date venues' 'mark venues' 'count venues' 'colours colours' 'quote quote' 'gift rsvp' 'note rsvp' 'tags tags' 'enter enter';column-gap:64px;text-align:left}
 .intro-card::before,.intro-card::after{display:none}
-.intro-card>.eyebrow{max-width:640px;padding:0 0 25px;border-bottom:1px solid #c7b6a0;margin:0 0 40px;font-size:12px;line-height:1.9;letter-spacing:1px;color:#74644f}
-.intro-card>.kicker{color:#965030;font-size:11px;letter-spacing:2px;margin-bottom:22px}
-.intro-card h1{font-family:'Great Vibes',cursive;font-size:clamp(70px,9vw,110px);line-height:1.05;background:none;color:#aa5934;filter:none;margin:0 0 28px;font-weight:400;letter-spacing:0}
+.intro-card>.eyebrow{grid-area:family;max-width:640px;padding:0 0 25px;border-bottom:1px solid #c7b6a0;margin:0 0 60px;font-size:12px;line-height:1.9;letter-spacing:1px;color:#74644f}
+.intro-card>.kicker{grid-area:kicker;color:#965030;font-size:11px;letter-spacing:2px;margin-bottom:22px}
+.intro-card h1{grid-area:names;font-family:'Great Vibes',cursive;font-size:clamp(70px,9vw,128px);line-height:1.05;background:none;color:#aa5934;filter:none;margin:0 0 28px;font-weight:400;letter-spacing:0}
 .intro-card h1 span{display:block}
 .intro-card h1 em{display:block;font-style:normal;font-family:'Cormorant Garamond',Georgia,serif;color:#74644f;-webkit-text-fill-color:#74644f;font-size:.3em;margin:0 0 8px 6px;letter-spacing:3px}
-.date-line{font:16px/1.7 'Jost',sans-serif;color:#73634e;letter-spacing:0;margin:0 0 26px;max-width:285px}
-.intro-card>.flourish{text-align:left;color:#965030;opacity:.65;margin:0 0 25px;letter-spacing:12px}
-#countdown{justify-content:flex-start;gap:20px;margin:0 0 40px}
+.date-line{grid-area:date;font:16px/1.7 'Jost',sans-serif;color:#73634e;letter-spacing:0;margin:0 0 26px;max-width:285px}
+.intro-card>.flourish{grid-area:mark;text-align:left;color:#965030;opacity:.65;margin:0 0 25px;letter-spacing:12px}
+.intro-card>.flourish~.flourish{display:none}
+#countdown{grid-area:count;justify-content:flex-start;gap:20px;margin:0 0 35px}
 #countdown div{background:none;border-radius:0;min-width:48px;padding:0;color:#423023}
 #countdown span{font:500 42px/1 'Cormorant Garamond',serif}
 #countdown label{font-size:10px;letter-spacing:2px;margin-top:10px;color:#826d55}
-blockquote{text-align:center;font-size:clamp(24px,3vw,34px);line-height:1.25;font-weight:400;max-width:620px;margin:0 auto 45px;color:#3d4e40;padding:0}
-blockquote cite{display:block;font:11px 'Jost',sans-serif;letter-spacing:2px;margin-top:22px;color:#7f755f}
-.note-box{margin:0 0 30px}
-.note-box h2{font-size:11px;letter-spacing:2px;color:#a45430;margin:0 0 14px}
-.note{font:16px/1.8 'Jost',sans-serif;color:#74644f;margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px}
-.tags{text-align:center;font-size:12px;color:#74644f;margin:30px 0 22px;letter-spacing:1px}
-#enter{display:block;margin:0 auto;border-radius:0;height:auto;background:#a45430;color:#fff8ef;box-shadow:none;animation:none;padding:18px 42px;font-size:14px;letter-spacing:1px}
-#enter::before{display:none}
-#enter:hover{background:#874022;transform:none;box-shadow:none}
-
-/* Wedding Details page (standalone) */
-.details-grid{display:flex;flex-direction:column;gap:0;border-top:1px solid #c7b6a0;margin:20px 0 0;background:#eee3d3;padding:15px 30px 0;max-width:560px;margin-left:auto;margin-right:auto}
+.section-group{grid-area:venues;align-self:start}
+.section-group>h2{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#a45430;margin:0 0 14px;font-weight:700}
+.details-grid{display:flex;flex-direction:column;gap:0;border-top:1px solid #c7b6a0;margin:0;background:#eee3d3;padding:15px 30px 0}
 .detail{background:transparent;border:0;border-bottom:1px solid #c7b6a0;border-radius:0;padding:28px 0;backdrop-filter:none;transition:none}
 .detail:hover{transform:none;box-shadow:none}
 .detail:last-child{border-bottom:0}
 .detail h3{font-size:11px;letter-spacing:2px;color:#a45430;margin:0 0 16px;text-transform:uppercase}
 .detail p{font:400 24px/1.5 'Cormorant Garamond',serif;color:#423023}
-
-/* Colour Palette page (standalone) */
-.swatches{font-size:13px;gap:24px;color:#554431;flex-wrap:wrap;display:flex;justify-content:center;margin-top:20px}
+.colours{grid-area:colours;display:flex;align-items:center;justify-content:space-between;gap:25px;margin:35px 0 65px;padding:28px 0;border-top:1px solid #c7b6a0;border-bottom:1px solid #c7b6a0}
+.colours h2{margin:0;font-size:11px;letter-spacing:2px;color:#74644f}
+.swatches{font-size:13px;gap:24px;color:#554431;flex-wrap:wrap}
 .swatches span{display:flex;flex-direction:column;align-items:center;gap:6px}
 .swatches i{width:36px;height:36px;border-radius:50%;box-shadow:0 0 0 4px #f7f1e7,0 0 0 5px #d2c1ac;margin:0}
 .swatches small{display:block;font-size:10px;letter-spacing:1px;color:#8a7c64;font-family:'Jost',sans-serif}
-
-@media(max-width:900px){.intro-card h1{font-size:90px}}
-@media(max-width:720px){.intro-card{padding:35px 24px 45px}.intro-card>.eyebrow{font-size:10px;letter-spacing:1.3px;margin-bottom:30px;padding-bottom:22px}.intro-card>.kicker{font-size:10px;margin-bottom:20px}.intro-card h1{font-size:72px;margin-bottom:25px}.intro-card h1 em{margin-left:4px}.date-line{font-size:14px;max-width:none}.intro-card>.flourish{margin-bottom:28px}#countdown{gap:28px;margin-bottom:32px}#countdown span{font-size:38px}.detail p{font-size:23px}blockquote{font-size:28px;margin-bottom:34px}.note{font-size:16px}.tags{margin-top:24px;font-size:11px}#enter{display:block;width:100%;padding:17px 20px}}
+blockquote{grid-area:quote;text-align:center;font-size:clamp(28px,3vw,43px);line-height:1.25;font-weight:400;max-width:730px;margin:0 auto 65px;color:#3d4e40;padding:0}
+blockquote cite{font:11px 'Jost',sans-serif;letter-spacing:2px;margin-top:22px;color:#7f755f}
+.rsvp{grid-area:rsvp;align-self:start;background:#3d4e40;color:#f7f1e7;padding:30px;margin:0}
+.rsvp h2{font-size:11px;letter-spacing:2px;color:#e9c89d;margin-bottom:18px}
+.rsvp p{font-size:24px;line-height:1.5}
+.gift-box{grid-area:gift;align-self:start;margin:0 0 30px}
+.note-box{grid-area:note;align-self:start}
+.gift-box h2,.note-box h2{font-size:11px;letter-spacing:2px;color:#a45430;margin:0 0 14px}
+.gift,.note{font:16px/1.8 'Jost',sans-serif;color:#74644f;margin:0}
+.note{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px}
+.tags{grid-area:tags;text-align:center;font-size:12px;color:#74644f;margin:52px 0 22px;letter-spacing:1px}
+#enter{grid-area:enter;justify-self:center;border-radius:0;height:auto;background:#a45430;color:#fff8ef;box-shadow:none;animation:none;padding:18px 42px;font-size:14px;letter-spacing:1px}
+#enter::before{display:none}
+#enter:hover{background:#874022;transform:none;box-shadow:none}
+@media(max-width:900px){.intro-card{padding:50px 35px;column-gap:35px}.colours{display:block}.colours h2{margin-bottom:24px}.swatches{justify-content:flex-start}.intro-card h1{font-size:90px}}
+@media(max-width:720px){.intro-card{padding:35px 24px 45px;display:block}.intro-card>.eyebrow{font-size:10px;letter-spacing:1.3px;margin-bottom:35px;padding-bottom:22px}.intro-card>.kicker{font-size:10px;margin-bottom:20px}.intro-card h1{font-size:72px;margin-bottom:25px}.intro-card h1 em{margin-left:4px}.date-line{font-size:14px;max-width:none}.intro-card>.flourish{margin-bottom:28px}#countdown{gap:28px;margin-bottom:38px}#countdown span{font-size:38px}.details-grid{padding:5px 25px 0;margin-bottom:30px}.detail p{font-size:23px}.colours{margin:30px 0 45px;padding:24px 0}.swatches{gap:20px;font-size:13px}blockquote{font-size:31px;margin-bottom:38px}.gift-box{margin-bottom:24px}.gift{font-size:15px}.note{font-size:16px}.rsvp{padding:28px}.rsvp p{font-size:23px}.tags{margin-top:35px;font-size:11px}#enter{display:block;width:100%;padding:17px 20px}}
 @media(max-width:360px){.intro-card h1{font-size:74px}.intro-card{padding-left:18px;padding-right:18px}#countdown{gap:20px}}
 
 /* Extra page sections, matched to the light editorial theme */
-.page-section{color:#332b23;border-top:0;padding-top:90px}
+.page-section{color:#332b23;border-top:1px solid #c7b6a0}
 .page-section h2{color:#a45430}
 .page-section p{color:#5a4f3d}
 .directions-grid h3{color:#965030}
