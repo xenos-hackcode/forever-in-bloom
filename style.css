@@ -187,7 +187,7 @@ figcaption{font-size:14px;letter-spacing:1px;color:#d9c6ac;padding-top:20px}
 .nav-close{position:absolute;top:18px;right:18px;background:transparent;border:0;color:#332b23;font-size:22px;width:36px;height:36px}
 .nav-link{display:block;padding:13px 20px;border-radius:30px;color:#4a3d2c;text-decoration:none;font:15px 'Cormorant Garamond',serif}
 .nav-link:hover{background:#e9dcc355}
-.nav-link.nav-home{background:var(--teal);color:#fff;font-weight:600}
+.nav-link.active{background:var(--teal);color:#fff;font-weight:600}
 
 /* ---------- Extra page sections ---------- */
 .page-section{max-width:720px;margin:0 auto;padding:60px 24px;border-top:1px solid #2f6f6230;color:var(--cream);text-align:center}

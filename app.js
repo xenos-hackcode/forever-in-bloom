@@ -281,6 +281,20 @@ document.querySelectorAll('.nav-link').forEach(link=>link.addEventListener('clic
 }));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&navDrawer.classList.contains('open'))closeNav();});
 
+/* ---------- Scroll-spy: highlight the nav link for the section in view ---------- */
+{
+  const navLinks=[...document.querySelectorAll('.nav-link')];
+  const sections=navLinks.map(link=>document.querySelector(link.getAttribute('href'))).filter(Boolean);
+  function setActive(id){
+    navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
+  }
+  const spy=new IntersectionObserver(entries=>{
+    const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
+    if(visible.length)setActive(visible[0].target.id);
+  },{root:document.querySelector('#intro'),threshold:[.25,.5,.75]});
+  sections.forEach(s=>spy.observe(s));
+}
+
 /* ---------- Hero slideshow ---------- */
 if(!reducedMotion){
   const slides=document.querySelectorAll('.hero-slide');

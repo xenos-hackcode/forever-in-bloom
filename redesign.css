@@ -69,7 +69,7 @@ blockquote cite{font:11px 'Jost',sans-serif;letter-spacing:2px;margin-top:22px;c
 .programme-list span{color:#a45430}
 .section-cta{background:#a45430;box-shadow:none}
 .section-cta:hover{background:#874022}
-.nav-link.nav-home{background:#965030}
+.nav-link.active{background:#965030;color:#fff8ef}
 
 /* Directions maps */
 .map-embed{width:100%;height:220px;border:0;border-radius:6px;margin:14px 0;filter:sepia(.15) saturate(.85)}
@@ -93,7 +93,7 @@ blockquote cite{font:11px 'Jost',sans-serif;letter-spacing:2px;margin-top:22px;c
 .field-hint{font-size:11px;color:#8a7c64;margin:-8px 0 0}
 .field-label{font-size:12px;letter-spacing:1px;color:#74644f;text-transform:uppercase;margin:4px 0 0}
 .attend-toggle{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.attend-btn{cursor:pointer;padding:22px 12px;border:1px solid #c7b6a0;border-radius:8px;background:#fdf8ee;font:14px 'Jost',sans-serif;color:#5a4f3d;display:flex;flex-direction:column;align-items:center;gap:8px}
+.attend-btn{cursor:pointer;height:auto;min-width:0;padding:22px 12px;border:1px solid #c7b6a0;border-radius:8px;background:#fdf8ee;font:14px 'Jost',sans-serif;color:#5a4f3d;display:flex;flex-direction:column;align-items:center;gap:8px}
 .attend-icon{font-size:22px;color:#a45430}
 .attend-btn.selected{background:#a45430;border-color:#a45430;color:#fff8ef}
 .attend-btn.selected .attend-icon{color:#fff8ef}
