@@ -124,6 +124,7 @@ function project(object){
 }
 let autoResumeAt=0;
 function render(now){
+  if(!intro.classList.contains('hidden')){last=now;requestAnimationFrame(render);return;}
   const dt=Math.min((now-last)/1000||0, .05);last=now;
   if(!paused&&!viewer.open&&!document.hidden){travel+=dt*24;clock+=dt;}
   zoom+=(targetZoom-zoom)*(reducedMotion?1:.18);
@@ -289,10 +290,16 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&navDrawer.classList
     navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
   }
   const spy=new IntersectionObserver(entries=>{
-    const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
-    if(visible.length)setActive(visible[0].target.id);
-  },{root:document.querySelector('#intro'),threshold:[.25,.5,.75]});
+    entries.forEach(entry=>{if(entry.isIntersecting)setActive(entry.target.id);});
+  },{root:document.querySelector('#intro'),rootMargin:'0px 0px -70% 0px',threshold:0});
   sections.forEach(s=>spy.observe(s));
+  const introScroller=document.querySelector('#intro');
+  const lastSection=sections.reduce((a,b)=>(a.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING)?b:a);
+  introScroller.addEventListener('scroll',()=>{
+    if(lastSection&&introScroller.scrollTop+introScroller.clientHeight>=introScroller.scrollHeight-4){
+      setActive(lastSection.id);
+    }
+  },{passive:true});
 }
 
 /* ---------- Hero slideshow ---------- */
