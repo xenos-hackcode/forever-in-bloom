@@ -275,32 +275,40 @@ function closeNav(){
 menuToggle.addEventListener('click',()=>navDrawer.classList.contains('open')?closeNav():openNav());
 navClose.addEventListener('click',closeNav);
 navBackdrop.addEventListener('click',closeNav);
+
+/* ---------- Scroll-spy: highlight the nav link for the section in view ---------- */
+const navLinks=[...document.querySelectorAll('.nav-link')];
+const navSections=navLinks.map(link=>document.querySelector(link.getAttribute('href'))).filter(Boolean);
+function setActiveNav(id){
+  navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
+}
+let suppressSpyUntil=0;
+const spy=new IntersectionObserver(entries=>{
+  if(performance.now()<suppressSpyUntil)return;
+  entries.forEach(entry=>{if(entry.isIntersecting)setActiveNav(entry.target.id);});
+},{root:document.querySelector('#intro'),rootMargin:'0px 0px -70% 0px',threshold:0});
+navSections.forEach(s=>spy.observe(s));
+const introScroller=document.querySelector('#intro');
+const lastNavSection=navSections.reduce((a,b)=>(a.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING)?b:a);
+introScroller.addEventListener('scroll',()=>{
+  if(performance.now()<suppressSpyUntil)return;
+  if(lastNavSection&&introScroller.scrollTop+introScroller.clientHeight>=introScroller.scrollHeight-4){
+    setActiveNav(lastNavSection.id);
+  }
+},{passive:true});
+
 document.querySelectorAll('.nav-link').forEach(link=>link.addEventListener('click',e=>{
   closeNav();
   const target=document.querySelector(link.getAttribute('href'));
-  if(target){e.preventDefault();intro.classList.remove('hidden');target.scrollIntoView({behavior:reducedMotion?'auto':'smooth',block:'start'});}
+  if(target){
+    e.preventDefault();
+    intro.classList.remove('hidden');
+    setActiveNav(target.id);
+    suppressSpyUntil=performance.now()+900;
+    target.scrollIntoView({behavior:reducedMotion?'auto':'smooth',block:'start'});
+  }
 }));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&navDrawer.classList.contains('open'))closeNav();});
-
-/* ---------- Scroll-spy: highlight the nav link for the section in view ---------- */
-{
-  const navLinks=[...document.querySelectorAll('.nav-link')];
-  const sections=navLinks.map(link=>document.querySelector(link.getAttribute('href'))).filter(Boolean);
-  function setActive(id){
-    navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
-  }
-  const spy=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{if(entry.isIntersecting)setActive(entry.target.id);});
-  },{root:document.querySelector('#intro'),rootMargin:'0px 0px -70% 0px',threshold:0});
-  sections.forEach(s=>spy.observe(s));
-  const introScroller=document.querySelector('#intro');
-  const lastSection=sections.reduce((a,b)=>(a.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING)?b:a);
-  introScroller.addEventListener('scroll',()=>{
-    if(lastSection&&introScroller.scrollTop+introScroller.clientHeight>=introScroller.scrollHeight-4){
-      setActive(lastSection.id);
-    }
-  },{passive:true});
-}
 
 /* ---------- Hero slideshow ---------- */
 if(!reducedMotion){
@@ -310,7 +318,7 @@ if(!reducedMotion){
     slides[slideIndex].classList.remove('active');
     slideIndex=(slideIndex+1)%slides.length;
     slides[slideIndex].classList.add('active');
-  },1000);
+  },3200);
 }
 
 /* ---------- RSVP form ---------- */
