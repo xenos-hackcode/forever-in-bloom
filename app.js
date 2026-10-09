@@ -276,37 +276,24 @@ menuToggle.addEventListener('click',()=>navDrawer.classList.contains('open')?clo
 navClose.addEventListener('click',closeNav);
 navBackdrop.addEventListener('click',closeNav);
 
-/* ---------- Scroll-spy: highlight the nav link for the section in view ---------- */
+/* ---------- Page navigation: one page visible at a time, switched only via the menu ---------- */
 const navLinks=[...document.querySelectorAll('.nav-link')];
-const navSections=navLinks.map(link=>document.querySelector(link.getAttribute('href'))).filter(Boolean);
+const pages=[...document.querySelectorAll('#intro>.page')];
 function setActiveNav(id){
   navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
 }
-let suppressSpyUntil=0;
-const spy=new IntersectionObserver(entries=>{
-  if(performance.now()<suppressSpyUntil)return;
-  entries.forEach(entry=>{if(entry.isIntersecting)setActiveNav(entry.target.id);});
-},{root:document.querySelector('#intro'),rootMargin:'0px 0px -70% 0px',threshold:0});
-navSections.forEach(s=>spy.observe(s));
-const introScroller=document.querySelector('#intro');
-const lastNavSection=navSections.reduce((a,b)=>(a.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING)?b:a);
-introScroller.addEventListener('scroll',()=>{
-  if(performance.now()<suppressSpyUntil)return;
-  if(lastNavSection&&introScroller.scrollTop+introScroller.clientHeight>=introScroller.scrollHeight-4){
-    setActiveNav(lastNavSection.id);
-  }
-},{passive:true});
-
+function showPage(id){
+  pages.forEach(p=>p.classList.toggle('active',p.id===id));
+  setActiveNav(id);
+  const page=document.getElementById(id);
+  if(page)page.scrollTop=0;
+}
 document.querySelectorAll('.nav-link').forEach(link=>link.addEventListener('click',e=>{
+  e.preventDefault();
   closeNav();
-  const target=document.querySelector(link.getAttribute('href'));
-  if(target){
-    e.preventDefault();
-    intro.classList.remove('hidden');
-    setActiveNav(target.id);
-    suppressSpyUntil=performance.now()+900;
-    target.scrollIntoView({behavior:'auto',block:'start'});
-  }
+  const id=link.getAttribute('href').slice(1);
+  intro.classList.remove('hidden');
+  showPage(id);
 }));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&navDrawer.classList.contains('open'))closeNav();});
 
