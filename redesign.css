@@ -9,7 +9,8 @@
 .hero-slide.active{opacity:1}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,#140a04b3 0%,#140a0473 40%,#140a04f2 100%)}
 .hero-label{position:relative;font:13px 'Jost',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#e9c89d;margin:0 0 14px}
-.hero-names{position:relative;font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(48px,9vw,86px);margin:0 0 10px;color:#fff8ef;text-shadow:0 4px 24px #0008}
+.hero-names{position:relative;font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(48px,9vw,86px);line-height:1.05;margin:0 0 10px;color:#fff8ef;text-shadow:0 4px 24px #0008}
+.hero-names span{display:block}
 .hero-date{position:relative;font:15px 'Cormorant Garamond',serif;letter-spacing:1px;color:#f3e3cf;margin:0}
 .intro-card{max-width:1140px;margin:0 auto;padding:70px 72px 65px;border-radius:0;background:transparent;box-shadow:none;animation:none;display:grid;grid-template-columns:1fr 1fr;grid-template-areas:'family family' 'kicker venues' 'names venues' 'date venues' 'mark venues' 'count venues' 'colours colours' 'quote quote' 'gift rsvp' 'note rsvp' 'tags tags' 'enter enter';column-gap:64px;text-align:left}
 .intro-card::before,.intro-card::after{display:none}
@@ -25,11 +26,13 @@
 #countdown div{background:none;border-radius:0;min-width:48px;padding:0;color:#423023}
 #countdown span{font:500 42px/1 'Cormorant Garamond',serif}
 #countdown label{font-size:10px;letter-spacing:2px;margin-top:10px;color:#826d55}
-.details-grid{grid-area:venues;display:flex;flex-direction:column;gap:0;border-top:1px solid #c7b6a0;align-self:start;margin:0;background:#eee3d3;padding:15px 30px 0}
+.section-group{grid-area:venues;align-self:start}
+.section-group>h2{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#a45430;margin:0 0 14px;font-weight:700}
+.details-grid{display:flex;flex-direction:column;gap:0;border-top:1px solid #c7b6a0;margin:0;background:#eee3d3;padding:15px 30px 0}
 .detail{background:transparent;border:0;border-bottom:1px solid #c7b6a0;border-radius:0;padding:28px 0;backdrop-filter:none;transition:none}
 .detail:hover{transform:none;box-shadow:none}
 .detail:last-child{border-bottom:0}
-.detail h2{font-size:11px;letter-spacing:2px;color:#a45430;margin-bottom:16px}
+.detail h3{font-size:11px;letter-spacing:2px;color:#a45430;margin:0 0 16px;text-transform:uppercase}
 .detail p{font:400 24px/1.5 'Cormorant Garamond',serif;color:#423023}
 .colours{grid-area:colours;display:flex;align-items:center;justify-content:space-between;gap:25px;margin:35px 0 65px;padding:28px 0;border-top:1px solid #c7b6a0;border-bottom:1px solid #c7b6a0}
 .colours h2{margin:0;font-size:11px;letter-spacing:2px;color:#74644f}
@@ -90,8 +93,11 @@ blockquote cite{font:11px 'Jost',sans-serif;letter-spacing:2px;margin-top:22px;c
 .field-hint{font-size:11px;color:#8a7c64;margin:-8px 0 0}
 .field-label{font-size:12px;letter-spacing:1px;color:#74644f;text-transform:uppercase;margin:4px 0 0}
 .attend-toggle{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.attend-btn{cursor:pointer;padding:16px;border:1px solid #c7b6a0;border-radius:8px;background:#fdf8ee;font:14px 'Jost',sans-serif;color:#5a4f3d}
+.attend-btn{cursor:pointer;padding:22px 12px;border:1px solid #c7b6a0;border-radius:8px;background:#fdf8ee;font:14px 'Jost',sans-serif;color:#5a4f3d;display:flex;flex-direction:column;align-items:center;gap:8px}
+.attend-icon{font-size:22px;color:#a45430}
 .attend-btn.selected{background:#a45430;border-color:#a45430;color:#fff8ef}
+.attend-btn.selected .attend-icon{color:#fff8ef}
+.rsvp-section h2{font-weight:700;text-transform:uppercase;letter-spacing:2px}
 .submit-rsvp{cursor:pointer;border:0;border-radius:40px;background:#a45430;color:#fff8ef;padding:15px;font:14px 'Jost',sans-serif;letter-spacing:1px}
 .submit-rsvp:hover{background:#874022}
 

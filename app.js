@@ -214,7 +214,7 @@ fullscreen.onclick=async()=>{try{if(document.fullscreenElement)await document.ex
 document.addEventListener('fullscreenchange',()=>fullscreen.setAttribute('aria-label',document.fullscreenElement?'Exit fullscreen':'Enter fullscreen'));
 
 /* ---------- Intro / countdown ---------- */
-const WEDDING_DATE=new Date('2026-12-19T12:00:00+01:00').getTime();
+const WEDDING_DATE=new Date('2026-12-19T08:00:00+01:00').getTime();
 function tickCountdown(){
   const now=Date.now();
   let diff=Math.max(0,WEDDING_DATE-now);
