@@ -305,7 +305,7 @@ document.querySelectorAll('.nav-link').forEach(link=>link.addEventListener('clic
     intro.classList.remove('hidden');
     setActiveNav(target.id);
     suppressSpyUntil=performance.now()+900;
-    target.scrollIntoView({behavior:reducedMotion?'auto':'smooth',block:'start'});
+    target.scrollIntoView({behavior:'auto',block:'start'});
   }
 }));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&navDrawer.classList.contains('open'))closeNav();});
