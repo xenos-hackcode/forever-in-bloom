@@ -17,7 +17,7 @@ const MESSAGES=['Forever in Bloom','Jennifer & Mosheh','19.12.2026','#TheJMAffai
 // (set in photos.js) are composited onto the coded card frame, if any are provided.
 let seed=1219;
 function random(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;}
-const images=(typeof PHOTOS!=='undefined'?PHOTOS:[]).map(name=>{const img=new Image();img.src='./'+encodeURIComponent(name);return img;});
+const images=(typeof PHOTOS!=='undefined'?PHOTOS:[]).map(name=>{const img=new Image();img.src='./'+name.split('/').map(encodeURIComponent).join('/');return img;});
 if(images.length)Promise.all(images.map(img=>img.decode().catch(()=>null))).then(()=>{document.querySelector('#loading').hidden=true;});
 else document.querySelector('#loading').hidden=true;
 const CARD_VARIANTS=['monogram','names','quote'];

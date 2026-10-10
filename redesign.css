@@ -106,7 +106,8 @@ blockquote cite{font:11px 'Jost',sans-serif;letter-spacing:2px;margin-top:22px;c
 .contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
 .contact-card{background:#2b2e45;color:#f0ecf7;border-radius:10px;padding:24px 18px}
 .contact-card strong{display:block;font:500 18px 'Cormorant Garamond',serif;margin-bottom:8px}
-.contact-card span{font-size:13px;color:#c9c4de}
+.contact-card span,.contact-card a{font-size:13px;color:#c9c4de;text-decoration:none;display:inline-block}
+.contact-card a:hover,.contact-card a:focus-visible{color:#fff8ef;text-decoration:underline}
 @media(max-width:600px){.contact-cards,.attend-toggle{grid-template-columns:1fr}}
 
 /* Gallery photo grid */
