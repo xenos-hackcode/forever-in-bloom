@@ -340,6 +340,6 @@ if(rsvpForm){
       `Attending: ${attending||'Not specified'}`,
       data.get('message')?`Message: ${data.get('message')}`:null,
     ].filter(Boolean).join('\n');
-    window.open('https://wa.me/2348039449592?text='+encodeURIComponent(lines),'_blank');
+    window.location.href='mailto:mosheleyinna@gmail.com?subject='+encodeURIComponent('RSVP — Jennifer & Mosheh')+'&body='+encodeURIComponent(lines);
   });
 }
