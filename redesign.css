@@ -60,6 +60,7 @@ blockquote cite{font:11px 'Jost',sans-serif;letter-spacing:2px;margin-top:22px;c
 
 /* Extra page sections, matched to the light editorial theme */
 .page-section{color:#332b23;border-top:1px solid #c7b6a0}
+.families-note{line-height:1.9;letter-spacing:.5px;color:#74644f}
 .page-section h2{color:#a45430}
 .page-section p{color:#5a4f3d}
 .directions-grid h3{color:#965030}
@@ -130,9 +131,31 @@ blockquote cite{font:11px 'Jost',sans-serif;letter-spacing:2px;margin-top:22px;c
 
 /* Gift Info */
 .gift-section{max-width:600px}
+.gift-cards{display:grid;gap:14px;text-align:left;margin-top:22px}
+.gift-card{background:#eee3d3;border-radius:10px;padding:16px 20px}
+.gift-card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.gift-card-head>span:first-child{font:700 16px 'Cormorant Garamond',serif;color:#423023}
+.gift-badge{font-size:11px;font-weight:700;letter-spacing:.5px;color:#a45430;background:#f7f1e7;border-radius:20px;padding:3px 10px;white-space:nowrap}
+.gift-card p{margin:2px 0;font-size:14px;font-weight:700;color:#5a4f3d}
 
 /* Celebrate banner */
 .celebrate-banner{position:relative;height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;color:#fff8ef;padding:0 20px}
 .celebrate-overlay{position:absolute;inset:0;background:#140a0470}
 .celebrate-banner h2{position:relative;font:400 clamp(26px,4vw,38px) 'Cormorant Garamond',serif;margin:0 0 10px;text-shadow:0 2px 14px #0008}
 .celebrate-banner p{position:relative;font:italic 500 18px 'Great Vibes',cursive;font-size:28px;margin:0;color:#f3e3cf}
+
+/* One font for the whole site, matching the "Our Story" heading (Cormorant Garamond)
+   instead of the mix of Jost / Great Vibes used elsewhere. Kept last and !important
+   so it wins over every earlier font-family/font shorthand declaration. */
+body, body *{font-family:'Cormorant Garamond',serif!important}
+
+/* ...except the couple's names, which keep their original cursive Great Vibes font.
+   (The em inside .intro-card h1 is the small "&" subtext and stays Cormorant Garamond.) */
+.hero-names,.hero-names *,.intro-card h1,.intro-card h1>span{font-family:'Great Vibes',cursive!important}
+
+/* Bold every small/meta text element: labels, captions, hints, nav, badges. */
+.hero-label,.kicker,#countdown label,.detail h3,.directions-grid h3,.colours h2,
+.swatches,blockquote cite,.gift-box h2,.note-box h2,.tags,#enter,.section-cta,
+.faq-list details p,.rsvp-deadline,.rsvp-form label,.field-label,.attend-btn,
+.submit-rsvp,.contact-card span,.contact-card a,.site-footer,.footer-copy a,
+.map-link,.nav-link,.story-block h3{font-weight:700}
