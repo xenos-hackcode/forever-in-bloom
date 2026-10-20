@@ -32,7 +32,7 @@
 .detail{background:transparent;border:0;border-bottom:1px solid #c7b6a0;border-radius:0;padding:28px 0;backdrop-filter:none;transition:none}
 .detail:hover{transform:none;box-shadow:none}
 .detail:last-child{border-bottom:0}
-.detail h3{font-size:11px;letter-spacing:2px;color:#a45430;margin:0 0 16px;text-transform:uppercase}
+.detail h3{font-size:16px;letter-spacing:2px;color:#a45430;margin:0 0 16px;text-transform:uppercase}
 .detail p{font:400 24px/1.5 'Cormorant Garamond',serif;color:#423023}
 .colours{grid-area:colours;display:flex;align-items:center;justify-content:space-between;gap:25px;margin:35px 0 65px;padding:28px 0;border-top:1px solid #c7b6a0;border-bottom:1px solid #c7b6a0}
 .colours h2{margin:0;font-size:11px;letter-spacing:2px;color:#74644f}
@@ -41,7 +41,8 @@
 .swatches i{width:36px;height:36px;border-radius:50%;box-shadow:0 0 0 4px #f7f1e7,0 0 0 5px #d2c1ac;margin:0}
 .swatches small{display:block;font-size:10px;letter-spacing:1px;color:#8a7c64;font-family:'Jost',sans-serif}
 blockquote{grid-area:quote;text-align:center;font-size:clamp(28px,3vw,43px);line-height:1.25;font-weight:400;max-width:730px;margin:0 auto 65px;color:#3d4e40;padding:0}
-blockquote cite{font:11px 'Jost',sans-serif;letter-spacing:2px;margin-top:22px;color:#7f755f}
+blockquote cite{font:11px 'Jost',sans-serif;letter-spacing:2px;margin-top:22px;color:#7f755f;display:block}
+.toast-line{font-style:italic;font-size:17px;line-height:1.5;color:#3d4e40;max-width:520px;margin:28px auto 0}
 .rsvp{grid-area:rsvp;align-self:start;background:#3d4e40;color:#f7f1e7;padding:30px;margin:0}
 .rsvp h2{font-size:11px;letter-spacing:2px;color:#e9c89d;margin-bottom:18px}
 .rsvp p{font-size:24px;line-height:1.5}
@@ -63,7 +64,7 @@ blockquote cite{font:11px 'Jost',sans-serif;letter-spacing:2px;margin-top:22px;c
 .families-note{line-height:1.9;letter-spacing:.5px;color:#74644f}
 .page-section h2{color:#a45430}
 .page-section p{color:#5a4f3d}
-.directions-grid h3{color:#965030}
+.directions-grid h3{color:#965030;font-size:16px}
 .faq-list h3{color:#965030}
 .contact-names{color:#332b23!important}
 .programme-list li{color:#423023;border-bottom:1px solid #c7b6a0}
@@ -77,12 +78,9 @@ blockquote cite{font:11px 'Jost',sans-serif;letter-spacing:2px;margin-top:22px;c
 
 /* FAQ accordion */
 .faq-list{display:grid;gap:14px;text-align:left;max-width:620px;margin:0 auto}
-.faq-list details{background:#eee3d3;border-radius:8px;padding:16px 20px}
-.faq-list summary{cursor:pointer;font:500 16px 'Cormorant Garamond',serif;color:#423023;list-style:none}
-.faq-list summary::-webkit-details-marker{display:none}
-.faq-list summary::after{content:'+';float:right;color:#a45430;font-weight:600}
-.faq-list details[open] summary::after{content:'−'}
-.faq-list details p{margin:12px 0 0;font-size:14px;color:#5a4f3d}
+.faq-list .faq-item{background:#eee3d3;border-radius:8px;padding:16px 20px}
+.faq-list .faq-q{font:500 16px 'Cormorant Garamond',serif;color:#423023;margin:0}
+.faq-list .faq-item p:not(.faq-q){margin:12px 0 0;font-size:14px;color:#5a4f3d}
 
 /* RSVP form */
 .rsvp-section{max-width:560px}
@@ -156,6 +154,17 @@ body, body *{font-family:'Cormorant Garamond',serif!important}
 /* Bold every small/meta text element: labels, captions, hints, nav, badges. */
 .hero-label,.kicker,#countdown label,.detail h3,.directions-grid h3,.colours h2,
 .swatches,blockquote cite,.gift-box h2,.note-box h2,.tags,#enter,.section-cta,
-.faq-list details p,.rsvp-deadline,.rsvp-form label,.field-label,.attend-btn,
+.faq-list .faq-item p:not(.faq-q),.rsvp-deadline,.rsvp-form label,.field-label,.attend-btn,
 .submit-rsvp,.contact-card span,.contact-card a,.site-footer,.footer-copy a,
 .map-link,.nav-link,.story-block h3{font-weight:700}
+
+/* Bump every body/label text size up a notch - not just headings - so nothing reads too small. */
+.page-section p,.directions-grid p,.story-block p,.gift-card p,.note,
+.rsvp p,.rsvp-form input,.rsvp-form textarea{font-size:17px!important}
+/* FAQ text bumped up further per request - bigger than the rest of the body copy. */
+.faq-list .faq-item p:not(.faq-q){font-size:19px!important}
+.faq-list .faq-q{font-size:20px!important}
+.hero-label,.kicker,.colours h2,.swatches,.tags,.rsvp-deadline,.field-label,
+.rsvp-form label,.contact-card span,.contact-card a,.site-footer,.footer-copy a,
+.gift-badge,blockquote cite,.date-line,.map-link{font-size:14px!important}
+.gift-card-head>span:first-child{font-size:18px!important}
